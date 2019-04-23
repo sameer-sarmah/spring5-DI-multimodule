@@ -5,10 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id 
+	@GeneratedValue(generator="system-uuid")
+	@GenericGenerator(name="system-uuid", strategy = "uuid")
 	private String ProductID;
 	private String ProductName;
 	private String CategoryID;
@@ -23,6 +26,14 @@ public class Product {
 		this.QuantityPerUnit = quantityPerUnit;
 		this.UnitPrice = unitPrice;
 	}
+
+	
+	
+	public Product() {
+		super();
+	}
+
+
 
 	public String getProductID() {
 		return ProductID;
