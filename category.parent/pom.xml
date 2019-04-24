@@ -45,6 +45,11 @@
     <module>../category.persistence</module>
     <module>../category.rest</module>
     <module>../category.service</module>
+    <module>../category.jms.pub</module>
+    <module>../category.jms.sub</module>
+    <module>../category.persistence.mongo</module>
+    <module>../category.kafka.pub</module>
+    <module>../category.kafka.sub</module>
 	</modules>
 
      <build>
