@@ -2,68 +2,45 @@ package category.document;
 
 import java.util.List;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-@Document
 public class Category {
 
-	@Id
-	private String CategoryID;
-    private String CategoryName;
-    private String Description;
-    private List<Product> products;
-    
+	private String categoryID;
+	private String categoryName;
+	private String description;
+
+
 	public Category(String categoryID, String categoryName, String description) {
-		CategoryID = categoryID;
-		CategoryName = categoryName;
-		Description = description;
+		this.categoryID = categoryID;
+		this.categoryName = categoryName;
+		this.description = description;
 	}
-	
-	
-
-	public List<Product> getProducts() {
-		return products;
-	}
-
-
-
-	public void setProducts(List<Product> products) {
-		this.products = products;
-	}
-
-
 
 	public Category() {
 		super();
 	}
 
-
-
 	public String getCategoryID() {
-		return CategoryID;
+		return categoryID;
 	}
 
 	public void setCategoryID(String categoryID) {
-		CategoryID = categoryID;
+		this.categoryID = categoryID;
 	}
 
 	public String getCategoryName() {
-		return CategoryName;
+		return categoryName;
 	}
 
 	public void setCategoryName(String categoryName) {
-		CategoryName = categoryName;
+		this.categoryName = categoryName;
 	}
 
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 
 	public void setDescription(String description) {
-		Description = description;
+		this.description = description;
 	}
-    
-	
 
 }
