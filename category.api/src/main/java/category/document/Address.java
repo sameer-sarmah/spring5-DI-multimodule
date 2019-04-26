@@ -7,12 +7,12 @@ public class Address {
 	private String country;
 	private long ZIP;
 
-	public Address(String street, String city, String country, long zIP) {
+	public Address(String street, String city, String country, long ZIP) {
 		super();
 		this.street = street;
 		this.city = city;
 		this.country = country;
-		ZIP = zIP;
+		this.ZIP = ZIP;
 	}
 
 	public String getstreet() {

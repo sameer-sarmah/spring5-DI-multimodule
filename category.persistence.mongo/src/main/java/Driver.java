@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 
 import org.bson.Document;
@@ -22,11 +23,26 @@ import category.document.Order;
 import category.document.OrderDetail;
 import category.document.Product;
 import category.document.Shipper;
+import category.mongo.repository.CustomerRepo;
+import category.mongo.repository.OrderRepo;
 import category.persistence.mongo.config.MongoConfig;
 
 public class Driver {
 
 	public static void main(String[] args) {
+		ApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
+		CustomerRepo customerRepo = (CustomerRepo) ctx.getBean("mongoCustomerRepo", CustomerRepo.class);
+		OrderRepo orderRepo = (OrderRepo) ctx.getBean("mongoOrderRepo", OrderRepo.class);
+		Optional<Customer> customerOption = customerRepo.findById("ALFKI");
+		Customer customer = customerOption.get();
+		System.out.println(customer.getCustomerName());
+		
+		Optional<Order> orderOptional = orderRepo.findById("10248");
+		Order order = orderOptional.get();
+		System.out.println(order.getShippedDate());
+	}
+
+	private void convertToDenormalized() {
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
 		MongoTemplate mongoRead = (MongoTemplate) ctx.getBean("northwind", MongoTemplate.class);
 		MongoTemplate mongoWrite = (MongoTemplate) ctx.getBean("mongo-northwind", MongoTemplate.class);
@@ -34,10 +50,8 @@ public class Driver {
 		insertCustomerDocs(mongoRead, mongoWrite);
 		insertShipperDocs(mongoRead, mongoWrite);
 		insertDenormalizedOrderDocs(mongoRead, mongoWrite);
-	    
-
 	}
-
+	
 	/*
 	 * db.customers.update({PostalCode:{$type:"double"}},{$set:{PostalCode:NumberInt
 	 * (785005)}},{multi: true})
@@ -54,7 +68,7 @@ public class Driver {
 	 * db.customers.find({City:{$type:"int"}})
 	 * db.customers.find({Address:{$type:"int"}})
 	 */
-	public static void insertCustomerDocs(MongoTemplate mongoRead, MongoTemplate mongoWrite) {
+	private static void insertCustomerDocs(MongoTemplate mongoRead, MongoTemplate mongoWrite) {
 		MongoCollection<Document> customersToRead = mongoRead.getCollection("customers");
 		boolean customerExist = mongoWrite.collectionExists("customer");
 		if (!customerExist) {
@@ -76,7 +90,7 @@ public class Driver {
 		}
 	}
 
-	public static void insertShipperDocs(MongoTemplate mongoRead, MongoTemplate mongoWrite) {
+	private static void insertShipperDocs(MongoTemplate mongoRead, MongoTemplate mongoWrite) {
 		MongoCollection<Document> shippersToRead = mongoRead.getCollection("shippers");
 		boolean shipperExist = mongoWrite.collectionExists("shipper");
 		if (!shipperExist) {
@@ -98,7 +112,7 @@ public class Driver {
 		}
 	}
 
-	public static void insertDenormalizedProductDocs(MongoTemplate mongoRead, MongoTemplate mongoWrite) {
+	private static void insertDenormalizedProductDocs(MongoTemplate mongoRead, MongoTemplate mongoWrite) {
 		MongoCollection<Document> categoriesToRead = mongoRead.getCollection("categories");
 		MongoCollection<Document> productsToRead = mongoRead.getCollection("products");
 		boolean productExist = mongoWrite.collectionExists("product");
@@ -142,7 +156,7 @@ db.orders.update({ShipCity:{$type:"int"}},{$set:{ShipCity:""}},{multi: true})
 db.orders.update({ShipAddress:{$type:"int"}},{$set:{ShipAddress:""}},{multi: true})
  * 
  * */
-	public static void insertDenormalizedOrderDocs(MongoTemplate mongoRead, MongoTemplate mongoWrite) {
+	private static void insertDenormalizedOrderDocs(MongoTemplate mongoRead, MongoTemplate mongoWrite) {
 		MongoCollection<Document> ordersToRead = mongoRead.getCollection("orders");
 		MongoCollection<Document> orderDetailsToRead = mongoRead.getCollection("orderdetails");
 		MongoCollection<Document> customersToRead = mongoRead.getCollection("customers");

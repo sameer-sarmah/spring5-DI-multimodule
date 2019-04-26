@@ -12,12 +12,12 @@ public class OrderDetail {
 	private double discount;
 	private double unitPrice;
 	
-	public OrderDetail(String productID, int quantity, double discount, double totalPrice) {
+	public OrderDetail(String productID, int quantity, double discount, double unitPrice) {
 		super();
 		this.productID = productID;
 		this.quantity = quantity;
 		this.discount = discount;
-		this.unitPrice = totalPrice;
+		this.unitPrice = unitPrice;
 	}
 
 	public String getProductID() {
@@ -44,12 +44,12 @@ public class OrderDetail {
 		this.discount = discount;
 	}
 
-	public double getTotalPrice() {
+	public double getunitPrice() {
 		return unitPrice;
 	}
 
-	public void setTotalPrice(double totalPrice) {
-		this.unitPrice = totalPrice;
+	public void setunitPrice(double unitPrice) {
+		this.unitPrice = unitPrice;
 	}
 	
 	
