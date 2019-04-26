@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.function.Consumer;
 
 import org.bson.Document;
 import org.springframework.context.ApplicationContext;
@@ -63,14 +64,15 @@ public class Driver {
 
 		if (countOfCustomersInTarget == 0) {
 			FindIterable<Document> iterator = customersToRead.find();
-			iterator.forEach((Document customerDoc) -> {
+			Consumer<Document> consumer =(Document customerDoc) -> {
 				try {
 					Customer customer = createCustomer(customerDoc);
 					mongoWrite.insert(customer, "customer");
 				} catch (Exception e) {
 					System.err.println(e.getMessage());
 				}
-			});
+			};
+			iterator.forEach(consumer);
 		}
 	}
 
@@ -84,14 +86,15 @@ public class Driver {
 
 		if (countOfShippersInTarget == 0) {
 			FindIterable<Document> iterator = shippersToRead.find();
-			iterator.forEach((Document shipperDoc) -> {
+			Consumer<Document> consumer =(Document shipperDoc) -> {
 				try {
 					Shipper shipper = createShipper(shipperDoc);
 					mongoWrite.insert(shipper, "shipper");
 				} catch (Exception e) {
 					System.err.println(e.getMessage());
 				}
-			});
+			};
+			iterator.forEach(consumer);
 		}
 	}
 
@@ -106,14 +109,14 @@ public class Driver {
 
 		if (countOfProductsInTarget == 0) {
 			FindIterable<Document> iterator = categoriesToRead.find();
-			iterator.forEach((Document categoryDoc) -> {
+			Consumer<Document> consumer = (Document categoryDoc) -> {
 
 				String categoryName = (String) categoryDoc.get("CategoryName");
 				Integer categoryID = (Integer) categoryDoc.get("CategoryID");
 				String description = (String) categoryDoc.get("Description");
 				Category category = new Category(categoryID.toString(), categoryName, description);
 				System.out.println(categoryName);
-				productsToRead.find(eq("CategoryID", categoryID)).forEach((Document productDoc) -> {
+				Consumer<Document> productsConsumer =  (Document productDoc) -> {
 					String productName = (String) productDoc.get("ProductName");
 					Integer productID = (Integer) productDoc.get("ProductID");
 					String quantityPerUnit = (String) productDoc.get("QuantityPerUnit");
@@ -121,8 +124,10 @@ public class Driver {
 					Product product = new Product(productID.toString(), productName, category, quantityPerUnit,
 							unitPrice);
 					mongoWrite.insert(product, "product");
-				});
-			});
+				};
+				productsToRead.find(eq("CategoryID", categoryID)).forEach(productsConsumer);
+			};
+			iterator.forEach(consumer);
 		}
 	}
 /*
@@ -151,23 +156,28 @@ db.orders.update({ShipAddress:{$type:"int"}},{$set:{ShipAddress:""}},{multi: tru
 
 		if (countOfOrdersInTarget == 0) {
 			FindIterable<Document> iterator = ordersToRead.find();
-			iterator.forEach((Document orderDoc) -> {
+			Consumer<Document> consumer = (Document orderDoc) -> {
 				List<OrderDetail> orderitems = new ArrayList<>();
 				Order order =new Order();
 				Integer orderID = (Integer) orderDoc.get("OrderID");
 				order.setOrderID(orderID.toString());
 				String customerID =(String)orderDoc.get("CustomerID");
-				orderDetailsToRead.find(eq("OrderID", orderID)).forEach((Document orderDetailDoc) -> {
+				Consumer<Document> orderDetailsConsumer =(Document orderDetailDoc) -> {
 					orderitems.add(createOrderDetail(orderDetailDoc));
-				});
+				};
+				orderDetailsToRead.find(eq("OrderID", orderID)).forEach(orderDetailsConsumer);
 				order.setOrderitems(orderitems);
-				customersToRead.find(eq("CustomerID", customerID)).forEach((Document customerDoc) -> {
+				
+				Consumer<Document> customerConsumer =(Document customerDoc) -> {
 					order.setCustomer(createCustomer(customerDoc));
-				});
+				};
+				customersToRead.find(eq("CustomerID", customerID)).forEach(customerConsumer);
 				int shipperID = (Integer) orderDoc.get("ShipVia");
-				shippersToRead.find(eq("ShipperID", shipperID)).forEach((Document shipperDoc) -> {
+				
+				Consumer<Document> shipperConsumer =(Document shipperDoc) -> {
 					order.setShipper(createShipper(shipperDoc));
-				});
+				};
+				shippersToRead.find(eq("ShipperID", shipperID)).forEach(shipperConsumer);
 				
 				String street = (String) orderDoc.get("ShipAddress");
 				String city = (String) orderDoc.get("ShipCity");
@@ -189,7 +199,8 @@ db.orders.update({ShipAddress:{$type:"int"}},{$set:{ShipAddress:""}},{multi: tru
 					e.printStackTrace();
 				} 
 				mongoWrite.insert(order, "order");
-			});
+			};
+			iterator.forEach(consumer);
 		}
 	}
 
