@@ -4,9 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.function.Consumer;
 
@@ -18,6 +16,8 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationOperation;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.data.mongodb.core.query.Criteria;
 
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
@@ -34,15 +34,8 @@ import category.mongo.aggregation.result.AmountByProductId;
 import category.mongo.aggregation.result.CountByProductId;
 import category.mongo.repository.CustomerRepo;
 import category.mongo.repository.OrderRepo;
+import category.mongo.txn.TransactionalService;
 import category.persistence.mongo.config.MongoConfig;
-import org.springframework.data.mongodb.core.aggregation.Aggregation;
-import org.springframework.data.mongodb.core.aggregation.AggregationResults;
-import org.springframework.data.mongodb.core.aggregation.ArithmeticOperators;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-
-import static org.springframework.data.domain.Sort.Direction.*;
-import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 
 public class Driver {
 
@@ -63,6 +56,9 @@ public class Driver {
 		//mostBoughtProduct();
 		//mostRevenueGeneratingProduct();
 		mostRevenueGeneratingOrder();
+		TransactionalService txnService = (TransactionalService)ctx.getBean("transactionalService", TransactionalService.class);
+		txnService.insertProduct();
+		txnService.deleteProduct();
 	}
 	/*
 	 * 
