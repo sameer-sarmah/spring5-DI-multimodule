@@ -1,14 +1,19 @@
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.repository.CrudRepository;
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
+import com.amazonaws.services.dynamodbv2.model.AttributeValue;
+import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
+import com.amazonaws.services.dynamodbv2.model.Condition;
 import com.amazonaws.services.dynamodbv2.model.CreateTableRequest;
 import com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput;
 
@@ -35,9 +40,40 @@ public class Runner {
 //		createTable(ctx,Shipper.class);
 //		createTable(ctx,Product.class);
 //		createTable(ctx,Order.class);
-		insertOrder(ctx);
+//		insertOrder(ctx);
+		scanCustomer(ctx);
+
 	}
 
+	private static void queryCustomer(ApplicationContext ctx) {
+		DynamoDBMapper mapper = ctx.getBean(DynamoDBMapper.class);
+        Map<String, AttributeValue> eav = new HashMap<String, AttributeValue>();
+        eav.put(":val1", new AttributeValue().withS("MORGK"));
+
+        DynamoDBQueryExpression<Customer> queryExpression = new DynamoDBQueryExpression<Customer>()
+        		 											.withKeyConditionExpression("customerID = :val1")
+												            .withExpressionAttributeValues(eav);
+        List<Customer> customers = mapper.query(Customer.class, queryExpression);
+        System.out.println(customers.size());
+	}
+	
+	private static void scanCustomer(ApplicationContext ctx) {
+		DynamoDBMapper mapper = ctx.getBean(DynamoDBMapper.class);
+        Condition equalityCondition= new Condition().withComparisonOperator(ComparisonOperator.EQ)
+        		.withAttributeValueList(Collections.singletonList(new AttributeValue("Alexander Feuer")));
+        DynamoDBScanExpression queryExpression = new DynamoDBScanExpression()
+        		 											.withFilterConditionEntry("customerName",equalityCondition);									           
+        List<Customer> customers = mapper.scan(Customer.class, queryExpression);
+        System.out.println(customers.size());
+        Condition containsCondition= new Condition().withComparisonOperator(ComparisonOperator.CONTAINS)
+        		.withAttributeValueList(Collections.singletonList(new AttributeValue("Alexander")));
+												           
+        customers = mapper.scan(Customer.class, queryExpression);
+        System.out.println(customers.size());
+	}
+	
+
+	
 	private static void createTable(ApplicationContext ctx,Class klass) {
 		DynamoDBMapper mapper = ctx.getBean(DynamoDBMapper.class);
 		AmazonDynamoDB dynamoDB = ctx.getBean(AmazonDynamoDB.class);
