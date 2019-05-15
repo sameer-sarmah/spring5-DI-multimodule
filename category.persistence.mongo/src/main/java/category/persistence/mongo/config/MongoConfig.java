@@ -27,14 +27,6 @@ public class MongoConfig {
 		return new MongoTemplate(mongoClient, "northwind");
 	}
 
-	@Bean("northwind")
-	@DependsOn("mongoClient")
-	public MongoTemplate mongoTemplate2() {
-		// mongodb is installed in the localhost and by default credentials are not
-		// required to perform CRUD
-		MongoClient mongoClient = mongoClient();
-		return new MongoTemplate(mongoClient, "Northwind");
-	}
 
 	@Bean
 	public MongoClient mongoClient() {

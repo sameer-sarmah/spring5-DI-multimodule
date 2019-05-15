@@ -1,8 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>api</artifactId>
-	<name>${project.artifactId} - [${project.packaging}]</name>
+	<artifactId>persistence.dynamo</artifactId>
 	<parent>
 		<groupId>category</groupId>
 		<artifactId>parent</artifactId>
@@ -10,10 +9,15 @@
 		<relativePath>../category.parent/pom.xml</relativePath>
 	</parent>
 	<dependencies>
-
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<groupId>category</groupId>
+			<artifactId>api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>category</groupId>
+			<artifactId>persistence.mongo</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -24,6 +28,10 @@
 			<artifactId>aws-java-sdk-dynamodb</artifactId>
 			<version>1.11.408</version>
 		</dependency>
+	    <dependency>
+		 <groupId>org.springframework.boot</groupId>
+		 <artifactId>spring-boot-starter-data-jpa</artifactId>
+	  </dependency>
 		<dependency>
 			<groupId>com.github.derjust</groupId>
 			<artifactId>spring-data-dynamodb</artifactId>
@@ -36,5 +44,6 @@
 				<directory>src/main/resources</directory>
 			</resource>
 		</resources>
+
 	</build>
 </project>
