@@ -3,6 +3,7 @@ import static com.mongodb.client.model.Filters.eq;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -48,6 +49,8 @@ public class Driver {
 		System.out.println(customer.getCustomerName());
 		
 		Optional<Order> orderOptional = orderRepo.findById("10248");
+		List<Order> orders = orderRepo.findByOrderIDIn(Arrays.asList("10248","10249","10250"));
+		System.out.println(orders.size());
 		Order order = orderOptional.get();
 		System.out.println(order.getShippedDate());
 		
@@ -55,10 +58,10 @@ public class Driver {
 		//totalAmountGroupByOrder();
 		//mostBoughtProduct();
 		//mostRevenueGeneratingProduct();
-		mostRevenueGeneratingOrder();
-		TransactionalService txnService = (TransactionalService)ctx.getBean("transactionalService", TransactionalService.class);
-		txnService.insertProduct();
-		txnService.deleteProduct();
+//		mostRevenueGeneratingOrder();
+//		TransactionalService txnService = (TransactionalService)ctx.getBean("transactionalService", TransactionalService.class);
+//		txnService.insertProduct();
+//		txnService.deleteProduct();
 	}
 	/*
 	 * 
