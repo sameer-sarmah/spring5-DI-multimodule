@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +17,11 @@ import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
 import com.amazonaws.services.dynamodbv2.model.Condition;
 import com.amazonaws.services.dynamodbv2.model.CreateTableRequest;
+import com.amazonaws.services.dynamodbv2.model.GlobalSecondaryIndex;
+import com.amazonaws.services.dynamodbv2.model.KeySchemaElement;
+import com.amazonaws.services.dynamodbv2.model.KeyType;
+import com.amazonaws.services.dynamodbv2.model.Projection;
+import com.amazonaws.services.dynamodbv2.model.ProjectionType;
 import com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput;
 
 import category.dynamo.repository.CustomerRepo;
@@ -41,8 +48,10 @@ public class Runner {
 //		createTable(ctx,Product.class);
 //		createTable(ctx,Order.class);
 //		insertOrder(ctx);
-		scanCustomer(ctx);
-
+		//createProductTable(ctx,Product.class);
+		//scanProduct(ctx);
+//		insertProduct(ctx);
+		queryGlobalIndexProduct(ctx);
 	}
 
 	private static void queryCustomer(ApplicationContext ctx) {
@@ -55,6 +64,20 @@ public class Runner {
 												            .withExpressionAttributeValues(eav);
         List<Customer> customers = mapper.query(Customer.class, queryExpression);
         System.out.println(customers.size());
+	}
+
+	private static void queryGlobalIndexProduct(ApplicationContext ctx) {
+		DynamoDBMapper mapper = ctx.getBean(DynamoDBMapper.class);
+		Map<String, AttributeValue> eav = new HashMap<String, AttributeValue>();
+		eav.put(":partition", new AttributeValue().withS("Chai"));
+
+		DynamoDBQueryExpression<Product> queryExpression = new DynamoDBQueryExpression<Product>()
+				.withIndexName("productNameIndex")
+				.withKeyConditionExpression("productName = :partition")
+				.withConsistentRead(false)
+				.withExpressionAttributeValues(eav);
+		List<Product> customers = mapper.query(Product.class, queryExpression);
+		System.out.println(customers.size());
 	}
 	
 	private static void scanCustomer(ApplicationContext ctx) {
@@ -72,13 +95,52 @@ public class Runner {
         System.out.println(customers.size());
 	}
 	
+	private static void scanProduct(ApplicationContext ctx) {
+		DynamoDBMapper mapper = ctx.getBean(DynamoDBMapper.class);
+        Condition geCondition= new Condition().withComparisonOperator(ComparisonOperator.GE)
+        		.withAttributeValueList(Collections.singletonList(new AttributeValue().withN("20")));
+        DynamoDBScanExpression queryExpression = new DynamoDBScanExpression()
+        		 											.withFilterConditionEntry("unitPrice",geCondition);									           
+        List<Product> products = mapper.scan(Product.class, queryExpression);
+        System.out.println(products.size());
 
+        Condition equalityCondition= new Condition().withComparisonOperator(ComparisonOperator.EQ)
+        		.withAttributeValueList(Collections.singletonList(new AttributeValue().withS("Beverages")));
+        queryExpression = new DynamoDBScanExpression()
+		 											.withFilterConditionEntry("category.categoryName",equalityCondition);									           
+        products = mapper.scan(Product.class, queryExpression);
+        System.out.println(products.size());
+
+	}
 	
 	private static void createTable(ApplicationContext ctx,Class klass) {
 		DynamoDBMapper mapper = ctx.getBean(DynamoDBMapper.class);
 		AmazonDynamoDB dynamoDB = ctx.getBean(AmazonDynamoDB.class);
 		CreateTableRequest tableRequest = mapper.generateCreateTableRequest(klass);
 		tableRequest.setProvisionedThroughput(new ProvisionedThroughput(1L, 1L));
+		dynamoDB.createTable(tableRequest);
+	}
+	
+	private static void createProductTable(ApplicationContext ctx,Class klass) {
+		DynamoDBMapper mapper = ctx.getBean(DynamoDBMapper.class);
+		AmazonDynamoDB dynamoDB = ctx.getBean(AmazonDynamoDB.class);
+		CreateTableRequest tableRequest = mapper.generateCreateTableRequest(klass);
+		tableRequest.setProvisionedThroughput(new ProvisionedThroughput(1L, 1L));
+        List<KeySchemaElement> tableKeySchema = new ArrayList<KeySchemaElement>();
+        tableKeySchema.add(new KeySchemaElement()
+            .withAttributeName("productName")
+            .withKeyType(KeyType.HASH));
+        tableKeySchema.add(new KeySchemaElement()
+            .withAttributeName("unitPrice")
+            .withKeyType(KeyType.RANGE));
+		GlobalSecondaryIndex ProductIndex = new GlobalSecondaryIndex()
+			    .withIndexName("productNameIndex")
+			    .withProvisionedThroughput(new ProvisionedThroughput()
+			        .withReadCapacityUnits((long) 1)
+			        .withWriteCapacityUnits((long) 1))
+			    	.withKeySchema(tableKeySchema)
+			        .withProjection(new Projection().withProjectionType(ProjectionType.ALL));
+		tableRequest.setGlobalSecondaryIndexes(Arrays.asList(ProductIndex));
 		dynamoDB.createTable(tableRequest);
 	}
 

@@ -2,6 +2,8 @@ package category.dynamo.table;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIndexHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIndexRangeKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
 /*
@@ -16,13 +18,13 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 public class Product {
 	@DynamoDBHashKey(attributeName = "productID")
 	private String productID;
-	@DynamoDBAttribute
+	@DynamoDBIndexHashKey(attributeName = "productName",globalSecondaryIndexName = "productNameIndex")
 	private String productName;
 	@DynamoDBAttribute
 	private Category category;
 	@DynamoDBAttribute
 	private String quantityPerUnit;
-	@DynamoDBAttribute
+	@DynamoDBIndexRangeKey(attributeName = "unitPrice",globalSecondaryIndexName = "productNameIndex")
 	private double unitPrice;
 	
 	public Product(String productID, String productName, Category category, String quantityPerUnit, double unitPrice) {
