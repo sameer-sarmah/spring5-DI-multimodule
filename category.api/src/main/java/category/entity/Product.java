@@ -54,6 +54,36 @@ public class Product {
 	public String getUnitPrice() {
 		return UnitPrice;
 	}
+
+
+
+	public void setProductID(String productID) {
+		ProductID = productID;
+	}
+
+
+
+	public void setProductName(String productName) {
+		ProductName = productName;
+	}
+
+
+
+	public void setCategoryID(String categoryID) {
+		CategoryID = categoryID;
+	}
+
+
+
+	public void setQuantityPerUnit(String quantityPerUnit) {
+		QuantityPerUnit = quantityPerUnit;
+	}
+
+
+
+	public void setUnitPrice(String unitPrice) {
+		UnitPrice = unitPrice;
+	}
 	
 	
 }

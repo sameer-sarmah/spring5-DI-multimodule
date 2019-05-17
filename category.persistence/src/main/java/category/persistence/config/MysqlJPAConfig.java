@@ -47,6 +47,8 @@ public class MysqlJPAConfig {
 		em.setJpaVendorAdapter(vendorAdapter);
         Properties jpaProperties = new Properties();
         jpaProperties.setProperty("hibernate.hbm2ddl.auto", "update");
+        jpaProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+        jpaProperties.setProperty("hibernate.show_sql", "true");
         em.setJpaProperties(jpaProperties);
 		return em;
 	}
