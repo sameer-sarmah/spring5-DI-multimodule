@@ -1,0 +1,10 @@
+1.download dynamo db locally 
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html
+
+2.download AWS CLI
+https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html
+
+
+3.download GUI client 
+DynamoDb-GUI-Client
+https://github.com/Arattian/DynamoDb-GUI-Client.git
