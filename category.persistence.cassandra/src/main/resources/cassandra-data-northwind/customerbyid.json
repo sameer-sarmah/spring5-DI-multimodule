@@ -1,0 +1,546 @@
+﻿{
+  "customerid" : "WARTH",
+  "address" : "{ city : 'Oulu', country : 'Finland', street : 'Torikatu 38', zip : 90110 }",
+  "customername" : "Pirkko Koskitalo",
+  "phone" : "981-443655"
+}
+{
+  "customerid" : "KOENE",
+  "address" : "{ city : 'Brandenburg', country : 'Germany', street : 'Maubelstr. 90', zip : 14776 }",
+  "customername" : "Philip Cramer",
+  "phone" : "0555-09876"
+}
+{
+  "customerid" : "RANCH",
+  "address" : "{ city : 'Buenos Aires', country : 'Argentina', street : 'Av. del Libertador 900', zip : 1010 }",
+  "customername" : "Sergio Gutiérrez",
+  "phone" : "(1) 123-5555"
+}
+{
+  "customerid" : "SPLIR",
+  "address" : "{ city : 'Lander', country : 'USA', street : 'P.O. Box 555', zip : 82520 }",
+  "customername" : "Art Braunschweiger",
+  "phone" : "(307) 555-4680"
+}
+{
+  "customerid" : "COMMI",
+  "address" : "{ city : 'Bangalore', country : '05432-043', street : 'Av. dos Lusíadas', zip : 1234 }",
+  "customername" : "Pedro Afonso",
+  "phone" : "Brazil"
+}
+{
+  "customerid" : "RICSU",
+  "address" : "{ city : 'Genève', country : 'Switzerland', street : 'Grenzacherweg 237', zip : 1203 }",
+  "customername" : "Michael Holz",
+  "phone" : "0897-034214"
+}
+{
+  "customerid" : "QUEEN",
+  "address" : "{ city : 'Bangalore', country : '05487-020', street : 'Alameda dos Canàrios', zip : 1234 }",
+  "customername" : "Lúcia Carvalho",
+  "phone" : "Brazil"
+}
+{
+  "customerid" : "SPECD",
+  "address" : "{ city : 'Brookfield', country : 'India', street : 'Brookfield', zip : 1234 }",
+  "customername" : "Dominique Perrier",
+  "phone" : "France"
+}
+{
+  "customerid" : "BOLID",
+  "address" : "{ city : 'Bangalore', country : 'India', street : 'C/ Araquil', zip : 1234 }",
+  "customername" : "Martín Sommer",
+  "phone" : "Spain"
+}
+{
+  "customerid" : "VAFFE",
+  "address" : "{ city : 'Århus', country : 'Denmark', street : 'Smagsloget 45', zip : 8200 }",
+  "customername" : "Palle Ibsen",
+  "phone" : "86 21 32 43"
+}
+{
+  "customerid" : "MAGAA",
+  "address" : "{ city : 'Bergamo', country : 'Italy', street : 'Via Ludovico il Moro 22', zip : 24100 }",
+  "customername" : "Giovanni Rovelli",
+  "phone" : "035-640230"
+}
+{
+  "customerid" : "QUICK",
+  "address" : "{ city : 'Cunewalde', country : 'Germany', street : 'Taucherstraße 10', zip : 1307 }",
+  "customername" : "Horst Kloss",
+  "phone" : "0372-035188"
+}
+{
+  "customerid" : "LETSS",
+  "address" : "{ city : 'San Francisco', country : 'USA', street : '87 Polk St. Suite 5', zip : 94117 }",
+  "customername" : "Jaime Yorres",
+  "phone" : "(415) 555-5938"
+}
+{
+  "customerid" : "OCEAN",
+  "address" : "{ city : 'Buenos Aires', country : 'Argentina', street : 'Ing. Gustavo Moncada 8585 Piso 20-A', zip : 1010 }",
+  "customername" : "Yvonne Moncada",
+  "phone" : "(1) 135-5333"
+}
+{
+  "customerid" : "FISSA",
+  "address" : "{ city : 'Bangalore', country : 'India', street : 'C/ Moralzarzal', zip : 1234 }",
+  "customername" : "Diego Roel",
+  "phone" : "Spain"
+}
+{
+  "customerid" : "LAMAI",
+  "address" : "{ city : 'Toulouse', country : 'France', street : '1 rue Alsace-Lorraine', zip : 31000 }",
+  "customername" : "Annette Roulet",
+  "phone" : "61.77.61.10"
+}
+{
+  "customerid" : "VICTE",
+  "address" : "{ city : 'Brookfield', country : 'India', street : 'Brookfield', zip : 1234 }",
+  "customername" : "Mary Saveley",
+  "phone" : "France"
+}
+{
+  "customerid" : "TRAIH",
+  "address" : "{ city : 'Kirkland', country : 'USA', street : '722 DaVinci Blvd.', zip : 98034 }",
+  "customername" : "Helvetius Nagy",
+  "phone" : "(206) 555-8257"
+}
+{
+  "customerid" : "SAVEA",
+  "address" : "{ city : 'Boise', country : 'USA', street : '187 Suffolk Ln.', zip : 83720 }",
+  "customername" : "Jose Pavarotti",
+  "phone" : "(208) 555-8097"
+}
+{
+  "customerid" : "FURIB",
+  "address" : "{ city : 'Lisboa', country : 'Portugal', street : 'Jardim das rosas n. 32', zip : 1675 }",
+  "customername" : "Lino Rodriguez",
+  "phone" : "(1) 354-2534"
+}
+{
+  "customerid" : "CACTU",
+  "address" : "{ city : 'Buenos Aires', country : 'Argentina', street : 'Cerrito 333', zip : 1010 }",
+  "customername" : "Patricio Simpson",
+  "phone" : "(1) 135-5555"
+}
+{
+  "customerid" : "BONAP",
+  "address" : "{ city : 'Brookfield', country : 'India', street : 'Brookfield', zip : 1234 }",
+  "customername" : "Laurence Lebihan",
+  "phone" : "France"
+}
+{
+  "customerid" : "FOLIG",
+  "address" : "{ city : 'Brookfield', country : 'India', street : 'Brookfield', zip : 1234 }",
+  "customername" : "Martine Rancé",
+  "phone" : "France"
+}
+{
+  "customerid" : "GOURL",
+  "address" : "{ city : 'Bangalore', country : '04876-786', street : 'Av. Brasil', zip : 1234 }",
+  "customername" : "André Fonseca",
+  "phone" : "Brazil"
+}
+{
+  "customerid" : "SUPRD",
+  "address" : "{ city : 'Bangalore', country : 'B-6000', street : 'Boulevard Tirou', zip : 1234 }",
+  "customername" : "Pascale Cartrain",
+  "phone" : "Belgium"
+}
+{
+  "customerid" : "PARIS",
+  "address" : "{ city : 'Brookfield', country : 'India', street : 'Brookfield', zip : 1234 }",
+  "customername" : "Marie Bertrand",
+  "phone" : "France"
+}
+{
+  "customerid" : "GODOS",
+  "address" : "{ city : 'Bangalore', country : 'India', street : 'C/ Romero', zip : 1234 }",
+  "customername" : "José Pedro Freyre",
+  "phone" : "Spain"
+}
+{
+  "customerid" : "FRANK",
+  "address" : "{ city : 'München', country : 'Germany', street : 'Berliner Platz 43', zip : 80805 }",
+  "customername" : "Peter Franken",
+  "phone" : "089-0877310"
+}
+{
+  "customerid" : "EASTC",
+  "address" : "{ city : 'London', country : 'UK', street : '35 King George', zip : 1234 }",
+  "customername" : "Ann Devon",
+  "phone" : "(171) 555-0297"
+}
+{
+  "customerid" : "LEHMS",
+  "address" : "{ city : 'Frankfurt a.M.', country : 'Germany', street : 'Magazinweg 7', zip : 60528 }",
+  "customername" : "Renate Messner",
+  "phone" : "069-0245984"
+}
+{
+  "customerid" : "FRANS",
+  "address" : "{ city : 'Torino', country : 'Italy', street : 'Via Monte Bianco 34', zip : 10100 }",
+  "customername" : "Paolo Accorti",
+  "phone" : "011-4988260"
+}
+{
+  "customerid" : "ROMEY",
+  "address" : "{ city : 'Bangalore', country : 'India', street : 'Gran Vía', zip : 1234 }",
+  "customername" : "Alejandra Camino",
+  "phone" : "Spain"
+}
+{
+  "customerid" : "SIMOB",
+  "address" : "{ city : 'Kobenhavn', country : 'Denmark', street : 'Vinbæltet 34', zip : 1734 }",
+  "customername" : "Jytte Petersen",
+  "phone" : "31 12 34 56"
+}
+{
+  "customerid" : "WOLZA",
+  "address" : "{ city : 'Warszawa', country : 'Poland', street : 'ul. Filtrowa 68', zip : 1234 }",
+  "customername" : "Zbyszek Piestrzeniewicz",
+  "phone" : "(26) 642-7012"
+}
+{
+  "customerid" : "TOMSP",
+  "address" : "{ city : 'Münster', country : 'Germany', street : 'Luisenstr. 48', zip : 44087 }",
+  "customername" : "Karin Josephs",
+  "phone" : "0251-031259"
+}
+{
+  "customerid" : "LACOR",
+  "address" : "{ city : 'Brookfield', country : 'India', street : 'Brookfield', zip : 1234 }",
+  "customername" : "Daniel Tonini",
+  "phone" : "France"
+}
+{
+  "customerid" : "ANATR",
+  "address" : "{ city : 'México D.F.', country : 'Mexico', street : 'Avda. de la Constitución 2222', zip : 5021 }",
+  "customername" : "Ana Trujillo",
+  "phone" : "(5) 555-4729"
+}
+{
+  "customerid" : "WELLI",
+  "address" : "{ city : 'Bangalore', country : '08737-363', street : 'Rua do Mercado', zip : 1234 }",
+  "customername" : "Paula Parente",
+  "phone" : "Brazil"
+}
+{
+  "customerid" : "ALFKI",
+  "address" : "{ city : 'Berlin', country : 'Germany', street : 'Obere Str. 57', zip : 12209 }",
+  "customername" : "Maria Anders",
+  "phone" : "030-0074321"
+}
+{
+  "customerid" : "LONEP",
+  "address" : "{ city : 'Portland', country : 'USA', street : '89 Chiaroscuro Rd.', zip : 97219 }",
+  "customername" : "Fran Wilson",
+  "phone" : "(503) 555-9573"
+}
+{
+  "customerid" : "MEREP",
+  "address" : "{ city : 'Montréal', country : 'Canada', street : '43 rue St. Laurent', zip : 1234 }",
+  "customername" : "Jean Fresnière",
+  "phone" : "(514) 555-8054"
+}
+{
+  "customerid" : "FAMIA",
+  "address" : "{ city : 'Bangalore', country : '05442-030', street : 'Rua Orós', zip : 1234 }",
+  "customername" : "Aria Cruz",
+  "phone" : "Brazil"
+}
+{
+  "customerid" : "BLAUS",
+  "address" : "{ city : 'Mannheim', country : 'Germany', street : 'Forsterstr. 57', zip : 68306 }",
+  "customername" : "Hanna Moos",
+  "phone" : "0621-08460"
+}
+{
+  "customerid" : "HUNGC",
+  "address" : "{ city : 'Elgin', country : 'USA', street : 'City Center Plaza 516 Main St.', zip : 97827 }",
+  "customername" : "Yoshi Latimer",
+  "phone" : "(503) 555-6874"
+}
+{
+  "customerid" : "BLONP",
+  "address" : "{ city : 'Brookfield', country : 'India', street : 'Brookfield', zip : 1234 }",
+  "customername" : "Frédérique Citeaux",
+  "phone" : "France"
+}
+{
+  "customerid" : "SEVES",
+  "address" : "{ city : 'London', country : 'UK', street : '90 Wadhurst Rd.', zip : 1234 }",
+  "customername" : "Hari Kumar",
+  "phone" : "(171) 555-1717"
+}
+{
+  "customerid" : "OLDWO",
+  "address" : "{ city : 'Anchorage', country : 'USA', street : '2743 Bering St.', zip : 99508 }",
+  "customername" : "Rene Phillips",
+  "phone" : "(907) 555-7584"
+}
+{
+  "customerid" : "LAUGB",
+  "address" : "{ city : 'Vancouver', country : 'Canada', street : '1900 Oak St.', zip : 1234 }",
+  "customername" : "Yoshi Tannamuri",
+  "phone" : "(604) 555-3392"
+}
+{
+  "customerid" : "ISLAT",
+  "address" : "{ city : 'Cowes', country : 'UK', street : 'Garden House Crowther Way', zip : 1234 }",
+  "customername" : "Helen Bennett",
+  "phone" : "(198) 555-8888"
+}
+{
+  "customerid" : "NORTS",
+  "address" : "{ city : 'London', country : 'UK', street : 'South House 300 Queensbridge', zip : 1234 }",
+  "customername" : "Simon Crowther",
+  "phone" : "(171) 555-7733"
+}
+{
+  "customerid" : "MAISD",
+  "address" : "{ city : 'Bruxelles', country : 'Belgium', street : 'Rue Joseph-Bens 532', zip : 1234 }",
+  "customername" : "Catherine Dewey",
+  "phone" : "(02) 201 24 67"
+}
+{
+  "customerid" : "CENTC",
+  "address" : "{ city : 'México D.F.', country : 'Mexico', street : 'Sierras de Granada 9993', zip : 5022 }",
+  "customername" : "Francisco Chang",
+  "phone" : "(5) 555-3392"
+}
+{
+  "customerid" : "PERIC",
+  "address" : "{ city : 'México D.F.', country : 'Mexico', street : 'Calle Dr. Jorge Cash 321', zip : 5033 }",
+  "customername" : "Guillermo Fernández",
+  "phone" : "(5) 552-3745"
+}
+{
+  "customerid" : "FRANR",
+  "address" : "{ city : 'Brookfield', country : 'India', street : 'Brookfield', zip : 1234 }",
+  "customername" : "Carine Schmitt",
+  "phone" : "France"
+}
+{
+  "customerid" : "LAZYK",
+  "address" : "{ city : 'Walla Walla', country : 'USA', street : '12 Orchestra Terrace', zip : 99362 }",
+  "customername" : "John Steel",
+  "phone" : "(509) 555-7969"
+}
+{
+  "customerid" : "FOLKO",
+  "address" : "{ city : 'Bräcke', country : 'Sweden', street : 'Åkergatan 24', zip : 1234 }",
+  "customername" : "Maria Larsson",
+  "phone" : "0695-34 67 21"
+}
+{
+  "customerid" : "LINOD",
+  "address" : "{ city : 'I. de Margarita', country : 'Venezuela', street : 'Ave. 5 de Mayo Porlamar', zip : 4980 }",
+  "customername" : "Felipe Izquierdo",
+  "phone" : "(8) 34-56-12"
+}
+{
+  "customerid" : "QUEDE",
+  "address" : "{ city : 'Bangalore', country : '02389-673', street : 'Rua da Panificadora', zip : 1234 }",
+  "customername" : "Bernardo Batista",
+  "phone" : "Brazil"
+}
+{
+  "customerid" : "VINET",
+  "address" : "{ city : 'Reims', country : 'France', street : '59 rue de l78Abbaye', zip : 51100 }",
+  "customername" : "Paul Henriot",
+  "phone" : "26.47.15.10"
+}
+{
+  "customerid" : "RATTC",
+  "address" : "{ city : 'Albuquerque', country : 'USA', street : '2817 Milton Dr.', zip : 87110 }",
+  "customername" : "Paula Wilson",
+  "phone" : "(505) 555-5939"
+}
+{
+  "customerid" : "CONSH",
+  "address" : "{ city : 'London', country : 'UK', street : 'Berkeley Gardens 12  Brewery', zip : 1234 }",
+  "customername" : "Elizabeth Brown",
+  "phone" : "(171) 555-2282"
+}
+{
+  "customerid" : "PICCO",
+  "address" : "{ city : 'Salzburg', country : 'Austria', street : 'Geislweg 14', zip : 5020 }",
+  "customername" : "Georg Pipps",
+  "phone" : "6562-9722"
+}
+{
+  "customerid" : "OTTIK",
+  "address" : "{ city : 'Köln', country : 'Germany', street : 'Mehrheimerstr. 369', zip : 50739 }",
+  "customername" : "Henriette Pfalzheim",
+  "phone" : "0221-0644327"
+}
+{
+  "customerid" : "GALED",
+  "address" : "{ city : 'Bangalore', country : 'India', street : 'Rambla de Cataluña', zip : 1234 }",
+  "customername" : "Eduardo Saavedra",
+  "phone" : "Spain"
+}
+{
+  "customerid" : "BOTTM",
+  "address" : "{ city : 'Tsawassen', country : 'Canada', street : '23 Tsawassen Blvd.', zip : 1234 }",
+  "customername" : "Elizabeth Lincoln",
+  "phone" : "(604) 555-4729"
+}
+{
+  "customerid" : "CHOPS",
+  "address" : "{ city : 'Bern', country : 'Switzerland', street : 'Hauptstr. 29', zip : 3012 }",
+  "customername" : "Yang Wang",
+  "phone" : "0452-076545"
+}
+{
+  "customerid" : "DRACD",
+  "address" : "{ city : 'Aachen', country : 'Germany', street : 'Walserweg 21', zip : 52066 }",
+  "customername" : "Sven Ottlieb",
+  "phone" : "0241-039123"
+}
+{
+  "customerid" : "ANTON",
+  "address" : "{ city : 'México D.F.', country : 'Mexico', street : 'Mataderos  2312', zip : 5023 }",
+  "customername" : "Antonio Moreno",
+  "phone" : "(5) 555-3932"
+}
+{
+  "customerid" : "HANAR",
+  "address" : "{ city : 'Bangalore', country : '05454-876', street : 'Rua do Paço', zip : 1234 }",
+  "customername" : "Mario Pontes",
+  "phone" : "Brazil"
+}
+{
+  "customerid" : "RICAR",
+  "address" : "{ city : 'Bangalore', country : '02389-890', street : 'Av. Copacabana', zip : 1234 }",
+  "customername" : "Janete Limeira",
+  "phone" : "Brazil"
+}
+{
+  "customerid" : "LILAS",
+  "address" : "{ city : 'Barquisimeto', country : 'Venezuela', street : 'Carrera 52 con Ave. Bolívar #65-98 Llano Largo', zip : 3508 }",
+  "customername" : "Carlos González",
+  "phone" : "(9) 331-6954"
+}
+{
+  "customerid" : "BERGS",
+  "address" : "{ city : 'Luleå', country : 'Sweden', street : 'Berguvsvägen  8', zip : 785005 }",
+  "customername" : "Christina Berglund",
+  "phone" : "0921-12 34 65"
+}
+{
+  "customerid" : "ERNSH",
+  "address" : "{ city : 'Graz', country : 'Austria', street : 'Kirchgasse 6', zip : 8010 }",
+  "customername" : "Roland Mendel",
+  "phone" : "7675-3425"
+}
+{
+  "customerid" : "PRINI",
+  "address" : "{ city : 'Lisboa', country : 'Portugal', street : 'Estrada da saúde n. 58', zip : 1756 }",
+  "customername" : "Isabel de Castro",
+  "phone" : "(1) 356-5634"
+}
+{
+  "customerid" : "MORGK",
+  "address" : "{ city : 'Leipzig', country : 'Germany', street : 'Heerstr. 22', zip : 4179 }",
+  "customername" : "Alexander Feuer",
+  "phone" : "0342-023176"
+}
+{
+  "customerid" : "TRADH",
+  "address" : "{ city : 'Bangalore', country : '05634-030', street : 'Av. Inês de Castro', zip : 1234 }",
+  "customername" : "Anabela Domingues",
+  "phone" : "Brazil"
+}
+{
+  "customerid" : "REGGC",
+  "address" : "{ city : 'Reggio Emilia', country : 'Italy', street : 'Strada Provinciale 124', zip : 42100 }",
+  "customername" : "Maurizio Moroni",
+  "phone" : "0522-556721"
+}
+{
+  "customerid" : "GROSR",
+  "address" : "{ city : 'Caracas', country : 'Venezuela', street : '5ª Ave. Los Palos Grandes', zip : 1081 }",
+  "customername" : "Manuel Pereira",
+  "phone" : "(2) 283-2951"
+}
+{
+  "customerid" : "WANDK",
+  "address" : "{ city : 'Stuttgart', country : 'Germany', street : 'Adenauerallee 900', zip : 70563 }",
+  "customername" : "Rita Müller",
+  "phone" : "0711-020361"
+}
+{
+  "customerid" : "BSBEV",
+  "address" : "{ city : 'London', country : 'UK', street : 'Fauntleroy Circus', zip : 1234 }",
+  "customername" : "Victoria Ashworth",
+  "phone" : "(171) 555-1212"
+}
+{
+  "customerid" : "DUMON",
+  "address" : "{ city : 'Brookfield', country : 'India', street : 'Brookfield', zip : 1234 }",
+  "customername" : "Janine Labrune",
+  "phone" : "France"
+}
+{
+  "customerid" : "HUNGO",
+  "address" : "{ city : 'Cork', country : 'Ireland', street : '8 Johnstown Road', zip : 1234 }",
+  "customername" : "Patricia McKenna",
+  "phone" : "2967 542"
+}
+{
+  "customerid" : "WHITC",
+  "address" : "{ city : 'Seattle', country : 'USA', street : '305 - 14th Ave. S. Suite 3B', zip : 98128 }",
+  "customername" : "Karl Jablonski",
+  "phone" : "(206) 555-4112"
+}
+{
+  "customerid" : "AROUT",
+  "address" : "{ city : 'London', country : 'UK', street : '120 Hanover Sq.', zip : 1234 }",
+  "customername" : "Thomas Hardy",
+  "phone" : "(171) 555-7788"
+}
+{
+  "customerid" : "SANTG",
+  "address" : "{ city : 'Stavern', country : 'Norway', street : 'Erling Skakkes gate 78', zip : 4110 }",
+  "customername" : "Jonas Bergulfsen",
+  "phone" : "07-98 92 35"
+}
+{
+  "customerid" : "THEBI",
+  "address" : "{ city : 'Portland', country : 'USA', street : '89 Jefferson Way Suite 2', zip : 97201 }",
+  "customername" : "Liz Nixon",
+  "phone" : "(503) 555-3612"
+}
+{
+  "customerid" : "GREAL",
+  "address" : "{ city : 'Eugene', country : 'USA', street : '2732 Baker Blvd.', zip : 97403 }",
+  "customername" : "Howard Snyder",
+  "phone" : "(503) 555-7555"
+}
+{
+  "customerid" : "THECR",
+  "address" : "{ city : 'Butte', country : 'USA', street : '55 Grizzly Peak Rd.', zip : 59801 }",
+  "customername" : "Liu Wong",
+  "phone" : "(406) 555-5834"
+}
+{
+  "customerid" : "HILAA",
+  "address" : "{ city : 'San Cristóbal', country : 'Venezuela', street : 'Carrera 22 con Ave. Carlos Soublette #8-35', zip : 5022 }",
+  "customername" : "Carlos Hernández",
+  "phone" : "(5) 555-1340"
+}
+{
+  "customerid" : "TORTU",
+  "address" : "{ city : 'México D.F.', country : 'Mexico', street : 'Avda. Azteca 123', zip : 5033 }",
+  "customername" : "Miguel Angel Paolino",
+  "phone" : "(5) 555-2933"
+}
+{
+  "customerid" : "WILMK",
+  "address" : "{ city : 'Helsinki', country : 'Finland', street : 'Keskuskatu 45', zip : 21240 }",
+  "customername" : "Matti Karttunen",
+  "phone" : "90-224 8858"
+}
