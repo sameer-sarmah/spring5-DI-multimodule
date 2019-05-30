@@ -35,8 +35,8 @@ public class Runner {
 	public static void main(String[] args) {
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(CassandraDbConfig.class, MongoConfig.class);
 		CustomerByNameRepo customerRepo = ctx.getBean(CustomerByNameRepo.class);
-		Optional<CustomerByName> manuel = customerRepo.findById("Manuel Pereira");
-		System.out.println(manuel.get().getCustomerName());
+		CustomerByName manuel = customerRepo.findByCustomerName("Manuel Pereira");
+		System.out.println(manuel.getCustomerName());
 	}
 
 	private static void populateTables(ApplicationContext ctx) {

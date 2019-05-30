@@ -8,5 +8,5 @@ import category.cassandra.table.CustomerByName;
 
 @Repository
 public interface CustomerByNameRepo extends CassandraRepository<CustomerByName, String>{
-	
+	CustomerByName findByCustomerName(String customerName);
 }
