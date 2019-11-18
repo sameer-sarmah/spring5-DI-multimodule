@@ -2,8 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>kafka.sub</artifactId>
-	<packaging>jar</packaging>
-	<parent>
+    <parent>
 		<groupId>category</groupId>
 		<artifactId>parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
@@ -16,6 +15,11 @@
 			<artifactId>api</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+        <dependency>
+            <groupId>category</groupId>
+            <artifactId>catagory.kafka.core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>

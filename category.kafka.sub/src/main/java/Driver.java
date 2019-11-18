@@ -7,9 +7,10 @@ import category.kafka.sub.config.KafkaSubscriberConfig;
  
 public class Driver {
  
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
     	ApplicationContext ctx = new AnnotationConfigApplicationContext
 				(KafkaSubscriberConfig.class);
     	KafkaSubscriber kafkaSubscriber = (KafkaSubscriber)ctx.getBean("kafkaSubscriber", KafkaSubscriber.class);
+    	Thread.sleep(100000);
     }
 }

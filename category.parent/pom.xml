@@ -50,7 +50,10 @@
     <module>../category.persistence.mongo</module>
     <module>../category.kafka.pub</module>
     <module>../category.kafka.sub</module>
-	</modules>
+    <module>../category.service.jta</module>
+
+		<module>../catagory.kafka.core</module>
+    </modules>
 
      <build>
 		<resources>

@@ -1,5 +1,7 @@
 package category.kafka.sub;
 
+import model.Greeting;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.annotation.PartitionOffset;
 import org.springframework.kafka.annotation.TopicPartition;
@@ -13,8 +15,12 @@ public class KafkaSubscriber {
 			  partitionOffsets = {
 			    @PartitionOffset(partition = "0", initialOffset = "0")
 			}))
-	public void onMessage(@Payload String message) {
-		System.err.println(message);
+	public void onMessage(@Payload ConsumerRecord message) {
+
+		if(message.value() instanceof Greeting){
+			Greeting greeting = (Greeting)message.value();
+			System.out.println(greeting.getMessage());
+		}
 	}
 	
 }
