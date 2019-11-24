@@ -27,6 +27,11 @@
 		</dependency>
 		<dependency>
 			<groupId>category</groupId>
+			<artifactId>jms.core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>category</groupId>
 			<artifactId>beverage</artifactId>
 			<version>${project.version}</version>
 		</dependency>
