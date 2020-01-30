@@ -17,6 +17,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationOperation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.data.mongodb.core.aggregation.Fields;
 import org.springframework.data.mongodb.core.query.Criteria;
 
 import com.mongodb.client.FindIterable;
@@ -84,6 +85,7 @@ public class Driver {
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
 		MongoTemplate mongoTemplate = (MongoTemplate) ctx.getBean("mongo-northwind", MongoTemplate.class);
 	    AggregationResults<CountByCountryAndCity> aggregate = mongoTemplate.aggregate(aggregations, "customer", CountByCountryAndCity.class);
+
 	    aggregate.forEach((record)->{
 	    	System.out.println(record);
 	    });
