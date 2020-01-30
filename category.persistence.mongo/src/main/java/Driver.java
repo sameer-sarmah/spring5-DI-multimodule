@@ -18,6 +18,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationOperation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.data.mongodb.core.aggregation.Fields;
 import org.springframework.data.mongodb.core.query.Criteria;
 
 import com.mongodb.client.FindIterable;
@@ -48,21 +49,48 @@ public class Driver {
 		Customer customer = customerOption.get();
 		System.out.println(customer.getCustomerName());
 		
-		Optional<Order> orderOptional = orderRepo.findById("10248");
-		List<Order> orders = orderRepo.findByOrderIDIn(Arrays.asList("10248","10249","10250"));
-		System.out.println(orders.size());
-		Order order = orderOptional.get();
-		System.out.println(order.getShippedDate());
+//		Optional<Order> orderOptional = orderRepo.findById("10248");
+//		List<Order> orders = orderRepo.findByOrderIDIn(Arrays.asList("10248","10249","10250"));
+//		System.out.println(orders.size());
+//		Order order = orderOptional.get();
+//		System.out.println(order.getShippedDate());
 		
+		multipleFieldsGroupBy();
 
 		//totalAmountGroupByOrder();
-		//mostBoughtProduct();
+//		mostBoughtProduct();
 		//mostRevenueGeneratingProduct();
 //		mostRevenueGeneratingOrder();
 //		TransactionalService txnService = (TransactionalService)ctx.getBean("transactionalService", TransactionalService.class);
 //		txnService.insertProduct();
 //		txnService.deleteProduct();
 	}
+	/*
+	 *
+	 db.customer.aggregate([
+    {$match :{ "address.country" : { $in : ["Germany","USA","Belgium","Canada"] }}},
+    {$group:{_id:  {country: "$address.country",city:"$address.city"},count:{$sum:1} }},
+    {$sort:{ "_id.country" : 1, "_id.city" :1}}
+    ])
+	 * 
+	 * */
+
+	
+	public static void multipleFieldsGroupBy() {
+		List<AggregationOperation> operations= new ArrayList<>();
+		operations.add(Aggregation.match(new Criteria("address.country").in("Germany","USA","Belgium","Canada")));
+		operations.add(Aggregation.project("address"));
+		operations.add(Aggregation.group("address.country","address.city").count().as("count"));	
+		operations.add(Aggregation.sort(new Sort(Direction.ASC, "_id.country","_id.city")));
+		Aggregation aggregations= Aggregation.newAggregation(operations);
+		ApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
+		MongoTemplate mongoTemplate = (MongoTemplate) ctx.getBean("mongo-northwind", MongoTemplate.class);
+	    AggregationResults<String> aggregate = mongoTemplate.aggregate(aggregations, "customer", String.class);
+	    aggregate.forEach((record)->{
+	    	System.out.println(record);
+	    });
+	}
+	
 	/*
 	 * 
 	 * 
@@ -122,6 +150,7 @@ db.order.aggregate([
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
 		MongoTemplate mongoTemplate = (MongoTemplate) ctx.getBean("mongo-northwind", MongoTemplate.class);
 	    AggregationResults<CountByProductId> aggregate = mongoTemplate.aggregate(aggregations, "order", CountByProductId.class);
+	    System.out.println( aggregate.getMappedResults().size());
 	    aggregate.forEach((countByProductId)->{
 	    	System.out.println("product id is "+countByProductId.getProductID()+" total count is "+ countByProductId.getTotalCount());
 	    });
