@@ -24,7 +24,7 @@ public class MongoConfig {
 		// mongodb is installed in the localhost and by default credentials are not
 		// required to perform CRUD
 		MongoClient mongoClient = mongoClient();
-		return new MongoTemplate(mongoClient, "northwind");
+		return new MongoTemplate(mongoClient, "mongo-northwind");
 	}
 
 

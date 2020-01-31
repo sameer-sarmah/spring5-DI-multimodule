@@ -77,7 +77,9 @@ public class Driver {
 	
 	public static void multipleFieldsGroupBy() {
 		List<AggregationOperation> operations= new ArrayList<>();
-		operations.add(Aggregation.match(new Criteria("address.country").in("Germany","USA","Belgium","Canada")));
+		Criteria countryFilter =  new Criteria("address.country").in("Germany","USA","Belgium","Canada");
+		Criteria zipFilter = new Criteria("address.ZIP").gt(1000);
+		operations.add(Aggregation.match(countryFilter.andOperator(zipFilter)));
 		operations.add(Aggregation.project("address"));
 		operations.add(Aggregation.group("address.country","address.city").count().as("count"));	
 		operations.add(Aggregation.sort(new Sort(Direction.ASC, "_id.country","_id.city")));
