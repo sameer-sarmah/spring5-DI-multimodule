@@ -82,7 +82,7 @@ public class Driver {
 		operations.add(Aggregation.match(countryFilter.andOperator(zipFilter)));
 		operations.add(Aggregation.project("address"));
 		operations.add(Aggregation.group("address.country","address.city").count().as("count"));	
-		operations.add(Aggregation.sort(new Sort(Direction.ASC, "_id.country","_id.city")));
+		operations.add(Aggregation.sort(Sort.by(Direction.ASC, "_id.country","_id.city")));
 		Aggregation aggregations= Aggregation.newAggregation(operations);
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
 		MongoTemplate mongoTemplate = (MongoTemplate) ctx.getBean("mongo-northwind", MongoTemplate.class);
@@ -120,8 +120,8 @@ public class Driver {
 		operations.add(Aggregation.unwind("orderitems"));
 		operations.add(Aggregation.project("_id","orderitems.productID","orderitems.unitPrice","orderitems.quantity")
 			.and("orderitems.unitPrice").multiply("orderitems.quantity").as("totalPrice"));
-		operations.add(Aggregation.group("_id").sum("totalPrice").as("totalPrice"));	
-		operations.add(Aggregation.sort(new Sort(Direction.ASC, "totalPrice")));
+		operations.add(Aggregation.group("_id").sum("totalPrice").as("totalPrice"));
+		operations.add(Aggregation.sort(Sort.by(Direction.ASC, "totalPrice")));
 		operations.add(Aggregation.match(new Criteria("totalPrice").gt(400)));
 		Aggregation aggregations= Aggregation.newAggregation(operations);
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
@@ -147,7 +147,7 @@ db.order.aggregate([
 		List<AggregationOperation> operations= new ArrayList<>();
 		operations.add(Aggregation.unwind("orderitems"));
 		operations.add(Aggregation.group("orderitems.productID").count().as("totalCount"));	
-		operations.add(Aggregation.sort(new Sort(Direction.DESC, "totalCount")));
+		operations.add(Aggregation.sort(Sort.by(Direction.DESC, "totalCount")));
 		Aggregation aggregations= Aggregation.newAggregation(operations);
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
 		MongoTemplate mongoTemplate = (MongoTemplate) ctx.getBean("mongo-northwind", MongoTemplate.class);
@@ -174,7 +174,7 @@ totalPrice: { $sum: { $multiply: [ "$orderitems.unitPrice", "$orderitems.quantit
 		operations.add(Aggregation.project("_id","orderitems.unitPrice","orderitems.quantity")
 				.and("orderitems.unitPrice").multiply("orderitems.quantity").as("totalPrice"));
 		operations.add(Aggregation.group("_id").sum("totalPrice").as("totalPrice"));	
-		operations.add(Aggregation.sort(new Sort(Direction.DESC, "totalPrice")));
+		operations.add(Aggregation.sort(Sort.by(Direction.DESC, "totalPrice")));
 		Aggregation aggregations= Aggregation.newAggregation(operations);
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
 		MongoTemplate mongoTemplate = (MongoTemplate) ctx.getBean("mongo-northwind", MongoTemplate.class);
@@ -212,7 +212,7 @@ totalPrice: { $sum: { $multiply: [ "$orderitems.unitPrice", "$orderitems.quantit
 		operations.add(Aggregation.project("orderitems.productID","orderitems.unitPrice","orderitems.quantity")
 				.and("orderitems.unitPrice").multiply("orderitems.quantity").as("price"));
 		operations.add(Aggregation.group("orderitems.productID").sum("price").as("totalPrice"));
-		operations.add(Aggregation.sort(new Sort(Direction.DESC, "totalPrice")));
+		operations.add(Aggregation.sort(Sort.by(Direction.DESC, "totalPrice")));
 		Aggregation aggregations= Aggregation.newAggregation(operations);
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
 		MongoTemplate mongoTemplate = (MongoTemplate) ctx.getBean("mongo-northwind", MongoTemplate.class);

@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.datastax.driver.core.LocalDate;
+
 
 import category.cassandra.repository.CustomerByIdRepo;
 import category.cassandra.repository.CustomerByNameRepo;

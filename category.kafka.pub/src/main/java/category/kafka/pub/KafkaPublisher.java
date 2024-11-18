@@ -1,15 +1,13 @@
 package category.kafka.pub;
 
-import java.util.Date;
-import java.util.Random;
+import java.util.concurrent.CompletableFuture;
 
-import model.Greeting;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
-import org.springframework.util.concurrent.ListenableFuture;
-import org.springframework.util.concurrent.ListenableFutureCallback;
+
+import model.Greeting;
 
 @Component("kafkaPublisher")
 public class KafkaPublisher {
@@ -24,19 +22,12 @@ public class KafkaPublisher {
 	public void publish(String topic,Greeting greeting) {
 
 
-		ListenableFuture<SendResult<Long, Object>> future =  kafkaTemplate.<Long,Object>send(topic, greeting.getId(), greeting);
+		CompletableFuture<SendResult<Long, Object>> future =  kafkaTemplate.<Long,Object>send(topic, greeting.getId(), greeting);
 		kafkaTemplate.flush();
-	    future.addCallback(new ListenableFutureCallback<SendResult<Long, Object>>() {
-	    	 
-	        @Override
-	        public void onSuccess(SendResult<Long, Object> result) {
-	            System.err.println("Sent message=[" + result.getProducerRecord().value() +
-	              "] with offset=[" + result.getRecordMetadata().offset() + "]");
-	        }
-	        @Override
-	        public void onFailure(Throwable ex) {
-	            System.err.println("Unable to send message due to : " + ex.getMessage());
-	        }
-	    });
+		future.thenAccept(result -> {
+			 System.out.println("Sent message=[" + result.getProducerRecord().value() +
+		              "] with offset=[" + result.getRecordMetadata().offset() + "]");
+		});
+
 	}
 }

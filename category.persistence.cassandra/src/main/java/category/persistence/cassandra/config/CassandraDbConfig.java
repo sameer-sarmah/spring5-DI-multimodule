@@ -6,7 +6,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.cassandra.config.AbstractCassandraConfiguration;
-import org.springframework.data.cassandra.config.CassandraClusterFactoryBean;
 import org.springframework.data.cassandra.config.CassandraEntityClassScanner;
 import org.springframework.data.cassandra.config.SchemaAction;
 import org.springframework.data.cassandra.core.convert.CassandraConverter;
@@ -14,8 +13,6 @@ import org.springframework.data.cassandra.core.convert.MappingCassandraConverter
 import org.springframework.data.cassandra.core.mapping.CassandraMappingContext;
 import org.springframework.data.cassandra.core.mapping.SimpleUserTypeResolver;
 import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
-
-import category.cassandra.table.Address;
 
 @EnableCassandraRepositories(basePackages= {"category"})
 @ComponentScan(basePackages= {"category"})
@@ -38,6 +35,7 @@ public class CassandraDbConfig extends AbstractCassandraConfiguration{
         return namespace;
     }
  
+    /* TO-DO : CassandraClusterFactoryBean is removed
     @Bean
     public CassandraClusterFactoryBean cluster() {
         CassandraClusterFactoryBean cluster = new CassandraClusterFactoryBean();
@@ -46,6 +44,7 @@ public class CassandraDbConfig extends AbstractCassandraConfiguration{
         cluster.setPort(port);
         return cluster;
     }
+    
  
     
     @Override
@@ -56,7 +55,7 @@ public class CassandraDbConfig extends AbstractCassandraConfiguration{
         ctx.setUserTypeResolver(new SimpleUserTypeResolver(cluster().getObject(), getKeyspaceName()));
         return ctx;
     }
-    
+    */
     @Bean
     public CassandraConverter converter() throws ClassNotFoundException {
         return new MappingCassandraConverter(cassandraMapping());

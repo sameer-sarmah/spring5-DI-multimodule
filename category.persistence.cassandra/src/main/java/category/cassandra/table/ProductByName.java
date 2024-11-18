@@ -5,7 +5,7 @@ import org.springframework.data.cassandra.core.mapping.CassandraType;
 import org.springframework.data.cassandra.core.mapping.PrimaryKeyColumn;
 import org.springframework.data.cassandra.core.mapping.Table;
 
-import com.datastax.driver.core.DataType.Name;
+import org.springframework.data.cassandra.core.mapping.CassandraType.Name;
 
 
 @Table

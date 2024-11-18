@@ -91,4 +91,10 @@ public class ProductRepo implements CrudRepository<Product, String>{
 		
 		
 	}
+
+	@Override
+	public void deleteAllById(Iterable<? extends String> ids) {
+		// TODO Auto-generated method stub
+		
+	}
 }

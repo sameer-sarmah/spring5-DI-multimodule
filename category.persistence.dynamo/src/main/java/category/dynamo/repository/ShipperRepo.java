@@ -90,4 +90,10 @@ public class ShipperRepo implements CrudRepository<Shipper, String>{
 		
 		
 	}
+
+	@Override
+	public void deleteAllById(Iterable<? extends String> ids) {
+		// TODO Auto-generated method stub
+		
+	}
 }

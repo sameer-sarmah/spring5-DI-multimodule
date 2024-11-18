@@ -14,7 +14,6 @@ import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -33,7 +32,9 @@ public class MysqlJPAConfig {
 	@DependsOn("entityManagerFactory")
 	public PlatformTransactionManager transactionManager(
 			@Qualifier("entityManagerFactory") EntityManagerFactory entityManagerFactory) {
-		return new JpaTransactionManager(entityManagerFactory);
+	      JpaTransactionManager transactionManager = new JpaTransactionManager();
+	      transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
+	      return transactionManager;
 	}
 
 	@Primary

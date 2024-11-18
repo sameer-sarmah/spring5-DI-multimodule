@@ -99,4 +99,10 @@ public class CustomerRepo implements CrudRepository<Customer, String>{
 		
 		
 	}
+
+	@Override
+	public void deleteAllById(Iterable<? extends String> ids) {
+		// TODO Auto-generated method stub
+		
+	}
 }

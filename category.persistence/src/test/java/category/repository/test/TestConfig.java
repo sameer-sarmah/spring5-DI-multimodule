@@ -68,7 +68,9 @@ public class TestConfig {
 	@DependsOn("entityManagerFactory")
 	public PlatformTransactionManager transactionManager(
 			@Qualifier("entityManagerFactory") EntityManagerFactory entityManagerFactory) {
-		return new JpaTransactionManager(entityManagerFactory);
+	      JpaTransactionManager transactionManager = new JpaTransactionManager();
+	      transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
+		return transactionManager;
 	}
 
 	@Bean("entityManagerFactory")

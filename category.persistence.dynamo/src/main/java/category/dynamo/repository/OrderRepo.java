@@ -90,4 +90,10 @@ public class OrderRepo implements CrudRepository<Order, String>{
 		
 		
 	}
+
+	@Override
+	public void deleteAllById(Iterable<? extends String> ids) {
+		// TODO Auto-generated method stub
+		
+	}
 }

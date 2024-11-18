@@ -4,12 +4,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
-import org.springframework.data.mongodb.MongoDbFactory;
-import org.springframework.data.mongodb.MongoTransactionManager;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
+import com.mongodb.ConnectionString;
+import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 
@@ -30,17 +29,11 @@ public class MongoConfig {
 
 	@Bean
 	public MongoClient mongoClient() {
-		return MongoClients.create("mongodb://localhost");
-	}
-
-	@Bean
-	public MongoDbFactory mongoDbFactory() {
-		com.mongodb.MongoClient mongoClient = new com.mongodb.MongoClient("localhost", 27017);
-		return new SimpleMongoDbFactory(mongoClient, "northwind");
-	}
-
-	@Bean
-	MongoTransactionManager transactionManager(MongoDbFactory dbFactory) {
-		return new MongoTransactionManager(dbFactory);
+        ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017/mongo-northwind");
+        MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
+          .applyConnectionString(connectionString)
+          .build();
+        
+        return MongoClients.create(mongoClientSettings);
 	}
 }

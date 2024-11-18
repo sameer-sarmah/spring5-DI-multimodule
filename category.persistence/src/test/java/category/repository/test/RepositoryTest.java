@@ -5,23 +5,23 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import category.entity.Category;
 import category.entity.Product;
 import category.repository.CategoryRepo;
 import category.repository.ProductRepo;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {TestConfig.class})
 @AutoConfigureTestDatabase(replace=Replace.NONE)
 @DataJpaTest
@@ -37,7 +37,7 @@ public class RepositoryTest {
 	@Autowired
 	EntityManager entityManager;
 	
-	@Before
+	@BeforeEach
 	public void setup() {
 		Category beverage = new Category("1","Beverages","Refreshing");
 		Product product =  new Product();
@@ -55,22 +55,22 @@ public class RepositoryTest {
 	@Test
 	public void readProductTest() {
 		List<Product> products =	productRepo.findAll();
-		Assert.assertEquals(products.size(), 1);
-		Assert.assertEquals("Chai", products.get(0).getProductName());
+		Assertions.assertEquals(products.size(), 1);
+		Assertions.assertEquals("Chai", products.get(0).getProductName());
 	}
 	
 	@Test
 	public void readCategoryTest() {
 		List<Category> categories=  categoryRepo.findAll();
-		Assert.assertEquals(categories.size(), 1);
-		Assert.assertEquals("Beverages", categories.get(0).getCategoryName());
+		Assertions.assertEquals(categories.size(), 1);
+		Assertions.assertEquals("Beverages", categories.get(0).getCategoryName());
 	}
 	
 	@Test
 	public void readCategoryJPQLTest() {
 		TypedQuery <Category> query=  entityManager.createQuery("SELECT c FROM Category c", Category.class);
 		List<Category> categories= query.getResultList();
-		Assert.assertEquals(categories.size(), 1);
-		Assert.assertEquals("Beverages", categories.get(0).getCategoryName());
+		Assertions.assertEquals(categories.size(), 1);
+		Assertions.assertEquals("Beverages", categories.get(0).getCategoryName());
 	}
 }
